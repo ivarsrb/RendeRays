@@ -2,8 +2,8 @@
 #include "render_target.h"
 #include "camera.h"
 #include "sphere.h"
-#include "timing.h"
-#include "log.h"
+#include "util/timing.h"
+#include "util/log.h"
 
 #define PIXEL_WIDTH 400
 #define PIXEL_HEIGHT 300
@@ -17,11 +17,11 @@ Application::Application() :
 
 // Execution of a rendering and storage process, could be looped 
 void Application::Run() {
-    Log::Info("Rendering the scene...");
-    Timing timer;
+    util::Log::Info("Rendering the scene...");
+    util::Timing timer;
     tracer_.Render(scene_, render_buffer_);
     timer.SetTime2(true);
-    Log::Info("Presenting to render target...");
+    util::Log::Info("Presenting to render target...");
     timer.SetTime1();
     // Medium to whitch final render is stored
     RenderTarget render_target("output\\output_1.ppm");

@@ -1,6 +1,6 @@
 #pragma once
 #include "ray.h"
-#include "types.h"
+#include "util/types.h"
 // Renderable object Sphere
 class Sphere {
 public:

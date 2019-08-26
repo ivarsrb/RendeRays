@@ -1,6 +1,7 @@
 #include "timing.h"
 #include "log.h"
 
+namespace util {
 Timing::Timing() {
     Reset();
     SetTime1();
@@ -32,6 +33,7 @@ t::U64 Timing::GetDuration() const {
     return std::chrono::duration_cast<std::chrono::milliseconds>(time_point_2_ - time_point_1_).count();
 }
 
-void Timing::Print() const{
+void Timing::Print() const {
     Log::Info(duration_, " ms");
 }
+}; //util

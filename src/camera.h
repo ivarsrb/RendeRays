@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-#include "types.h"
+#include "util/types.h"
 #include "ray.h"
 
 // A vantage point of the scene together with attributes that describe how

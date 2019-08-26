@@ -51,7 +51,7 @@
     <ClCompile Include="src\sphere.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\timing.cpp">
+    <ClCompile Include="src\util\timing.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -779,9 +779,6 @@
     <ClInclude Include="src\external\glm\vector_relational.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\types.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\application.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -792,9 +789,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\render_target.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\log.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\tracer.h">
@@ -812,7 +806,13 @@
     <ClInclude Include="src\sphere.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\timing.h">
+    <ClInclude Include="src\util\log.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\util\timing.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\util\types.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

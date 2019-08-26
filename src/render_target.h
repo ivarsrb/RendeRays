@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include "types.h"
+#include "util/types.h"
 
 // Class to which render of the scene is presented to for saving it in a file etc
 // Stores as PPM file

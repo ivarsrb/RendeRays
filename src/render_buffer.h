@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-#include "types.h"
+#include "util/types.h"
 #include "render_target.h"
 
 // Stores color data of the final render

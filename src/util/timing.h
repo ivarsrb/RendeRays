@@ -10,6 +10,7 @@ optional:  clock.SetTime1();
 Operation();
 clock.SetTime2(true);
 */
+namespace util {
 class Timing {
 public:
     // Forst time point is taken with construction
@@ -27,3 +28,4 @@ private:
     std::chrono::steady_clock::time_point time_point_2_;
     t::U64 duration_;
 };
+}; // util

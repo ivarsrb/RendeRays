@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 
+namespace util {
 // Logging class
 class Log {
 public:
@@ -42,3 +43,4 @@ public:
     // Show logs by severity
     static constexpr Severity detail = kInfo;
 };
+}; // util

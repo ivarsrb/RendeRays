@@ -1,7 +1,7 @@
 #include "render_target.h"
 #include <fstream>
 #include <sstream> 
-#include "log.h"
+#include "util/log.h"
 
 RenderTarget::RenderTarget(std::string_view filename) : 
     filename_(filename) {
@@ -37,7 +37,7 @@ void RenderTarget::Write(const t::ColorBuffer& buffer, const t::Size16& dimensio
     ofs.write(file_contents.c_str(), file_contents.size());
   
     ofs.close();
-    Log::Info("Color data of a size ", dimensions.width, "x", dimensions.height, " saved to file ", filename_);
+    util::Log::Info("Color data of a size ", dimensions.width, "x", dimensions.height, " saved to file ", filename_);
 }
 
 void RenderTarget::Show() const {

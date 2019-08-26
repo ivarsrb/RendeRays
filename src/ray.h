@@ -1,5 +1,5 @@
 #pragma once
-#include "types.h"
+#include "util/types.h"
 
 // Rays are fundamental building blocks of a ray-tracer.
 // Ray class is a generic class that represents a ray and allows to retrieve extra information
