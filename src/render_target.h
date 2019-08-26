@@ -9,11 +9,11 @@ public:
     // filename - full path to desired output file
     RenderTarget(std::string_view filename);
     // Write to passed buffer to file of a given dimensions
-    void Write(uint16_t width, uint16_t height, const t::ColorBuffer& buffer) const;
+    void Write(const t::ColorBuffer& buffer, const t::Size16& dimensions) const;
     // Make recorded file to pop up for convenience
     void Show() const;
 private:
     // Helper function to map values  '0.0-0.01' to '0-255'
-    uint32_t MapColorToInteger(t::F32 color_val) const;
+    t::U32 MapColorToInteger(t::F32 color_val) const;
     const std::string filename_;
 };

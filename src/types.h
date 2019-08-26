@@ -8,12 +8,14 @@ using F32 = float;
 using F64 = double;
 using U16 = uint16_t;
 using U32 = uint32_t;
+using U64 = uint64_t;
 using I16 = int16_t;
 using I32 = int32_t;
 // GLM linear math types aliasing
 using Vec2 = glm::tvec2<F32>;
 using Vec3 = glm::tvec3<F32>;
 using Vec4 = glm::tvec4<F32>;
+using Vec2u16 = glm::tvec2<U16>;
 using Mat3 = glm::tmat3x3<F32>;
 using Mat4 = glm::tmat4x4<F32>;
 // Type related constants
@@ -21,6 +23,15 @@ using Mat4 = glm::tmat4x4<F32>;
 // NOTE: constexpr are always inline, so no redefinitions
 constexpr F32 kInfinity32 = std::numeric_limits<F32>::infinity();
 constexpr F64 kInfinity64 = std::numeric_limits<F64>::infinity();
+// Structure to store size dimensions
+struct Size16 {
+    U16 width;
+    U16 height;
+};
+struct Size32 {
+    U32 width;
+    U32 height;
+};
 // Buffer type for color valued
 using ColorBuffer = std::vector<Vec3>;
 // Common colors

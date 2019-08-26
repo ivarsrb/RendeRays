@@ -46,6 +46,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="src\timing.cpp" />
     <ClCompile Include="src\tracer.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -302,6 +303,7 @@
     <ClInclude Include="src\render_target.h" />
     <ClInclude Include="src\scene.h" />
     <ClInclude Include="src\sphere.h" />
+    <ClInclude Include="src\timing.h" />
     <ClInclude Include="src\tracer.h" />
     <ClInclude Include="src\types.h" />
   </ItemGroup>
