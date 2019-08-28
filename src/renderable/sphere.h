@@ -3,8 +3,8 @@
 #include <ray.h>
 #include <util/types.h>
 
-namespace renderable {
 // Renderable object Sphere
+namespace renderable {
 class Sphere : public IRenderable {
 public:
     Sphere(const t::Vec3& center, t::F32 radius, const t::Vec3& color);

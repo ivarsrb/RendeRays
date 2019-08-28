@@ -1,8 +1,8 @@
 #pragma once
 #include <ray.h>
 
-namespace renderable {
 // Interface to renderable objects that the ray tracer can render
+namespace renderable {
 class IRenderable {
 public:
     IRenderable(const t::Vec3& color);
