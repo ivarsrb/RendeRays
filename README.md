@@ -1,0 +1,1 @@
+Rendering a static images of a scene using ray tracing technique.

@@ -13,19 +13,10 @@ const std::vector<Camera>& Scene::GetCameras() const {
     return cameras_;
 }
 
-/*
-const Camera& Scene::GetCamera(size_t index) const {
-    return cameras_.at(index);
+void Scene::AddRenderable(std::unique_ptr<renderable::IRenderable> renderable) {
+    renderables_.push_back(std::move(renderable));
 }
 
-const Camera& Scene::GetFirstCameras() const {
-    return cameras_.at(0);
-}*/
-
-void Scene::AddRenderable(const Sphere& renderable) {
-    renderables_.push_back(renderable);
-}
-
-const std::vector<Sphere>& Scene::GetRenderables() const {
+const std::vector<std::unique_ptr<renderable::IRenderable>>& Scene::GetRenderables() const {
     return renderables_;
 }
