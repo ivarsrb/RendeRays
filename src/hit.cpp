@@ -10,7 +10,7 @@ void Hit::SetDistance(t::F32 distance) {
 }
 
 void Hit::SetSurfaceNormal(const t::Vec3& normal) {
-    normal_ = normal;
+    normal_ = glm::normalize(normal);
 }
 
 t::F32 Hit::GetDistance() const {

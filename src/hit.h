@@ -8,6 +8,7 @@ public:
     // Set distance from ray origin to hitpoint
     void SetDistance(t::F32 distance);
     // Surface normal at the hit point
+    // Normal is normalized inside
     void SetSurfaceNormal(const t::Vec3& normal);
     t::F32 GetDistance() const;
     const t::Vec3& GetSurfaceNormal() const;

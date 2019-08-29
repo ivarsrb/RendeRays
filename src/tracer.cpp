@@ -1,4 +1,5 @@
 #include "tracer.h"
+#include <algorithm>
 #include "ray.h"
 #include "hit.h"
 
@@ -20,7 +21,14 @@ void Tracer::Render(const Scene& scene, RenderBuffer& render_buffer) const {
                 // Does this ray hit the object and if 'yes' then check if this object lies in front of object.
                 if (Hit hit; renderable.get()->Intersect(primary_ray, hit) && hit.GetDistance() < nearest_hit_distance) {
                     nearest_hit_distance = hit.GetDistance();
-                    render_buffer.SetColor(raster_pixel, renderable.get()->GetColor());
+                    // Determine final pixel color by lighting
+                    t::Vec3 pixel_color = renderable.get()->GetColor();
+                    if (scene.GetDirectionalLight().has_value()) {
+                        t::F32 light_intensity = std::max(glm::dot(hit.GetSurfaceNormal(),
+                            scene.GetDirectionalLight().value().GetDirection()), 0.0f);
+                        pixel_color *= light_intensity;
+                    }
+                    render_buffer.SetColor(raster_pixel, pixel_color);
                 }
             }
         }
