@@ -20,3 +20,11 @@ void Scene::AddRenderable(std::unique_ptr<renderable::IRenderable> renderable) {
 const std::vector<std::unique_ptr<renderable::IRenderable>>& Scene::GetRenderables() const {
     return renderables_;
 }
+
+void Scene::SetDirectionalLight(const DirectionalLight& light) {
+    directional_light.emplace(light);
+}
+
+const std::optional<DirectionalLight>& Scene::GetDirectionalLight() const {
+    return directional_light;
+}

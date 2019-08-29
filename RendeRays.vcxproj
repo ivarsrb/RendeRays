@@ -29,6 +29,7 @@
   <ItemGroup>
     <ClCompile Include="src\application.cpp" />
     <ClCompile Include="src\camera.cpp" />
+    <ClCompile Include="src\directional_light.cpp" />
     <ClCompile Include="src\external\glm\detail\glm.cpp" />
     <ClCompile Include="src\ray.cpp" />
     <ClCompile Include="src\renderable\aa_box.cpp" />
@@ -59,6 +60,7 @@
   <ItemGroup>
     <ClInclude Include="src\application.h" />
     <ClInclude Include="src\camera.h" />
+    <ClInclude Include="src\directional_light.h" />
     <ClInclude Include="src\external\catch2\catch.hpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>

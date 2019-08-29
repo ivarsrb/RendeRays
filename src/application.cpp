@@ -13,6 +13,7 @@ Application::Application() :
     render_buffer_(t::Size16{ PIXEL_WIDTH, PIXEL_HEIGHT }, t::kColorGray) {
     // Describe a scene
     scene_.AddCanera(Camera(t::Vec3(0.0, 0.0, 1.0), 0.0, 60.0, t::Size16{ PIXEL_WIDTH , PIXEL_HEIGHT }));
+    scene_.SetDirectionalLight(t::Vec3(1.0, -1.0, -1.0));
     //scene_.AddRenderable(std::make_unique<renderable::Sphere>(t::Vec3(0.0, 0.0, -5.0), 1.5f, t::kColorRed));
     //scene_.AddRenderable(std::make_unique<renderable::Sphere>(t::Vec3(0.5, 0.0, -7.0), 0.5f, t::kColorBlue));
     scene_.AddRenderable(std::make_unique<renderable::AABox>(t::Vec3(0.0, 0.0, -3.0), 0.5f, t::kColorGreen));
