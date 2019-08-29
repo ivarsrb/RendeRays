@@ -11,6 +11,8 @@ public:
     // Axis-alligned bounding box is described by two points - 
     // minimal and maximal cube points or bounds.
     AABox(const t::Vec3& min_bound, const t::Vec3& max_bound, const t::Vec3& color);
+    // Constructor that describes a box by it's senter and half-size 
+    AABox(const t::Vec3& center, t::F32 half_size, const t::Vec3& color);
     // Does the passed ray intersect the renderable
     // if yes, return distance from the ray's origin to hit spiot
     // If no hit occurs, distance is not modified.
