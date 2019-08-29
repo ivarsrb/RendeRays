@@ -5,11 +5,6 @@
 // Test ray - axis-alligned box intersection 
 using namespace renderable;
 namespace {
-// Construct and return box object given its center and half-size
-AABox GetBox(const t::Vec3& center, t::F32 half_size) {
-    return AABox(center - half_size, center + half_size, t::kColorBlask);
-}
-
 // Distance from ray origin to hitpoint box
 t::F32 distance = -1.0f;
 
@@ -19,12 +14,12 @@ Ray ray_z_to_origin(t::Vec3(0.0, 0.0, 10.0), t::Vec3(0.0, 0.0, -1.0));
 Ray ray_origin_to_positive_middle(t::Vec3(0.0, 0.0, 0.0), t::Vec3(1.0, 1.0, 1.0));
 
 // AA boxes
-AABox box_o_05 = GetBox(t::Vec3(0.0, 0.0, 0.0), 0.5f);
-AABox box_z_05 = GetBox(t::Vec3(0.0, 0.0, 10.0), 0.5f);
-AABox box_small_z_05 = GetBox(t::Vec3(0.0, 0.0, 0.5), 0.5f);
-AABox box_minus_z_05 = GetBox(t::Vec3(0.0, 0.0, -10.0), 0.5f);
-AABox box_x_05 = GetBox(t::Vec3(10.0, 0.0, 0.0), 0.5f);
-AABox box_small_x_05 = GetBox(t::Vec3(0.5, 0.0, 1.0), 0.5f);
+AABox box_o_05(t::Vec3(0.0, 0.0, 0.0), 0.5f, t::kColorBlask);
+AABox box_z_05(t::Vec3(0.0, 0.0, 10.0), 0.5f, t::kColorBlask);
+AABox box_small_z_05(t::Vec3(0.0, 0.0, 0.5), 0.5f, t::kColorBlask);
+AABox box_minus_z_05(t::Vec3(0.0, 0.0, -10.0), 0.5f, t::kColorBlask);
+AABox box_x_05(t::Vec3(10.0, 0.0, 0.0), 0.5f, t::kColorBlask);
+AABox box_small_x_05(t::Vec3(0.5, 0.0, 1.0), 0.5f, t::kColorBlask);
 
 
 // Tests
