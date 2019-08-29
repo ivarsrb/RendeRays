@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <limits>
 #include <glm/glm.hpp>
 
 // Common types aliasing and definition
@@ -44,4 +45,6 @@ constexpr Vec3 kColorGreen = Vec3(0.0, 1.0, 0.0);
 // Type compile-time checks
 static_assert(sizeof(F32) == 4);
 static_assert(sizeof(F64) == 8);
+// Weather compiler implements IEEE 754  floating point standard
+static_assert(std::numeric_limits<double>::is_iec559);
 };
