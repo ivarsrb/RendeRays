@@ -54,6 +54,7 @@
     </ClCompile>
     <ClCompile Include="src\util\timing.cpp" />
     <ClCompile Include="src\tracer.cpp" />
+    <ClCompile Include="src\util\util.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\application.h" />
@@ -314,6 +315,7 @@
     <ClInclude Include="src\util\timing.h" />
     <ClInclude Include="src\tracer.h" />
     <ClInclude Include="src\util\types.h" />
+    <ClInclude Include="src\util\util.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\external\glm\detail\func_common.inl" />
