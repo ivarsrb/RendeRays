@@ -15,7 +15,7 @@ AABox::AABox(const t::Vec3& center, t::F32 half_size, const t::Vec3& color) :
     max_bound_(center + half_size) {
 }
 
-bool AABox::Intersect(const Ray& ray, t::F32& distance) const {
+bool AABox::Intersect(const Ray& ray, Hit& hit) const {
     // Each component of the vector describes the distance from origin of the
     // ray to the plane perpendicular to it's axis. If value is infinite
     // it means ray is paralel to axis plane
@@ -37,11 +37,11 @@ bool AABox::Intersect(const Ray& ray, t::F32& distance) const {
     }
     // Inside the box
     if (tmin < 0.0) {
-        distance = tmax;
+        hit.SetDistance(tmax);
         return true;
     }
     // Ray starts outside the box and hits the box
-    distance = tmin;
+    hit.SetDistance(tmin);
     return true;
 }
 }; // renderable

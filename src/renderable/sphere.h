@@ -11,7 +11,7 @@ public:
     // Does the passed ray intersect the renderable
     // if yes, return distance from the ray's origin to hit spiot
     // If no hit occurs, distance is not modified.
-    virtual bool Intersect(const Ray& ray, t::F32& distance) const override;
+    virtual bool Intersect(const Ray& ray, Hit& hit) const override;
     const t::Vec3& GeCenter() const;
     t::F32 GetRadius() const;
 private:

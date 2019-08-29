@@ -10,7 +10,7 @@ Sphere::Sphere(const t::Vec3& center, t::F32 radius, const t::Vec3& color) :
 }
 
 // When false is returned 'distance' is unmodified
-bool Sphere::Intersect(const Ray& ray, t::F32& distance) const {
+bool Sphere::Intersect(const Ray& ray, Hit& hit) const {
     // Solutions to equation
     // There are two since it is a quadratic equation
     t::F32 solution_0;
@@ -27,11 +27,11 @@ bool Sphere::Intersect(const Ray& ray, t::F32& distance) const {
         }
         // If the smallest solution is non-negative, let it be the distance
         if (solution_0 >= 0) {
-            distance = solution_0;
+            hit.SetDistance(solution_0);
         }
         // If  smallest solution is negative, let the solution be the biggest one
         else if (solution_1 >= 0) {
-            distance = solution_1;
+            hit.SetDistance(solution_1);
         }
         // Both solutions are negative, sphere is behind ray origin
         else {
