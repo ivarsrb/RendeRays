@@ -13,6 +13,7 @@ public:
     AABox(const t::Vec3& min_bound, const t::Vec3& max_bound, const t::Vec3& color);
     // Does the passed ray intersect the renderable
     // if yes, return distance from the ray's origin to hit spiot
+    // If no hit occurs, distance is not modified.
     virtual bool Intersect(const Ray& ray, t::F32& distance) const override;
 private:
     // Box is described by two bounds - minimal and maximal

@@ -12,6 +12,7 @@ public:
     // Ray - renderable object intersection test
     // Return weather ray intersetcs the renderable 
     // and distance from ray origin to hit point.
+    // If no hit occurs, distance is not modified.
     virtual bool Intersect(const Ray& ray, t::F32& distance) const = 0;
     const t::Vec3& GetColor() const;
 protected:

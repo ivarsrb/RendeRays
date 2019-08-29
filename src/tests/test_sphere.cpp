@@ -1,11 +1,12 @@
 #include <catch2/catch.hpp>
-#include "../sphere.h"
-#include "../ray.h"
+#include <renderable/sphere.h>
+#include <ray.h>
 
 // Check if ray intersects spheres and compare distance
-
+using namespace renderable;
+namespace {
 // Distance from ray origin to hitpoint on sphere
-t::F32 distance;
+t::F32 distance = -1.0f;
 // Rays
 Ray ray_origin_to_z(t::Vec3(0.0, 0.0, 0.0), t::Vec3(0.0, 0.0, 1.0));
 Ray ray_z_to_origin(t::Vec3(0.0, 0.0, 10.0), t::Vec3(0.0, 0.0, -1.0));
@@ -62,3 +63,4 @@ TEST_CASE("Ray-sphere interraction, ray z to 0", "[sphere]") {
     CHECK_FALSE(sphere_far_z_small.Intersect(ray_z_to_origin, distance));
 }
 
+};
