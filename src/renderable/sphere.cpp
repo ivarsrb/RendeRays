@@ -29,13 +29,13 @@ bool Sphere::Intersect(const Ray& ray, Hit& hit) const {
         if (solution_0 >= 0) {
             hit.SetDistance(solution_0);
             // Calculate surface normal
-            hit.SetSurfaceNormal(center_ - ray.GetPoint(solution_0));
+            hit.SetSurfaceNormal(ray.GetPoint(solution_0) - center_);
         }
         // If  smallest solution is negative, let the solution be the biggest one
         else if (solution_1 >= 0) {
             hit.SetDistance(solution_1);
             // Calculate surface normal
-            hit.SetSurfaceNormal(center_ - ray.GetPoint(solution_1));
+            hit.SetSurfaceNormal(ray.GetPoint(solution_1) - center_);
         }
         // Both solutions are negative, sphere is behind ray origin
         else {

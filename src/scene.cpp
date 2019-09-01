@@ -22,6 +22,7 @@ const std::vector<std::unique_ptr<renderable::IRenderable>>& Scene::GetRenderabl
 }
 
 void Scene::SetDirectionalLight(const DirectionalLight& light) {
+    //light.GetDirection();
     directional_light.emplace(light);
 }
 

@@ -4,13 +4,10 @@
 
 // Axis-aliligned box
 // Axis alligned means that vectors conncting adjecent box vertices
-// are either paralel or orthogonal to axis of wolrd coordinate system.      
+// are either paralel or orthogonal to axis of world coordinate system.      
 namespace renderable {
 class AABox : public IRenderable {
 public:
-    // Axis-alligned bounding box is described by two points - 
-    // minimal and maximal cube points or bounds.
-    AABox(const t::Vec3& min_bound, const t::Vec3& max_bound, const t::Vec3& color);
     // Constructor that describes a box by it's senter and half-size 
     AABox(const t::Vec3& center, t::F32 half_size, const t::Vec3& color);
     // Does the passed ray intersect the renderable
@@ -18,7 +15,11 @@ public:
     // If no hit occurs, distance is not modified.
     virtual bool Intersect(const Ray& ray, Hit& hit) const override;
 private:
-    // Box is described by two bounds - minimal and maximal
+    // Center of the cube
+    const t::Vec3 center_;
+    // Size from center to outer edge (analogue to sphere radius)
+    const t::F32 half_size_;
+    // Additionally box is described by two bounds - minimal and maximal
     // Minimal bound have numericaly smallest values
     // Maximal bounds have numerically largest values.
     const t::Vec3 min_bound_;
