@@ -38,7 +38,7 @@ struct Size32 {
 using ColorBuffer = std::vector<Vec3>;
 // Common colors
 constexpr Vec3 kColorBlask = Vec3(0.0);
-constexpr Vec3 kColorBWhite = Vec3(1.0);
+constexpr Vec3 kColorWhite = Vec3(1.0);
 constexpr Vec3 kColorGray = Vec3(0.5, 0.5, 0.5);
 constexpr Vec3 kColorRed = Vec3(1.0, 0.0, 0.0);
 constexpr Vec3 kColorBlue = Vec3(0.0, 0.0, 1.0);

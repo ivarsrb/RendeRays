@@ -13,7 +13,8 @@
 #define PIXEL_HEIGHT 600
 
 Application::Application() : 
-    render_buffer_(t::Size16{ PIXEL_WIDTH, PIXEL_HEIGHT }, t::kColorGray) {
+    scene_(t::kColorGray),
+    render_buffer_(t::Size16{ PIXEL_WIDTH, PIXEL_HEIGHT }, t::kColorWhite) {
     // Describe a scene
     scene_.AddCanera(Camera(t::Vec3(0.0, 0.0, 5.0), 0.0, 60.0, t::Size16{ PIXEL_WIDTH , PIXEL_HEIGHT }));
     //scene_.SetLight(std::make_unique<light::Ambient>(t::Vec3(1.0, 1.0, 1.0)));

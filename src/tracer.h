@@ -12,6 +12,9 @@ public:
     // Accepts scene to be rendered and render_buffer to write color values to
     void Render(const Scene& scene, RenderBuffer& render_buffer) const;
 private:
+    // Calculate final color of the given screen pixel by traversing the scene
+    // by shooting rays from given scene camera.
+    t::Vec3 Trace(const t::Vec2u16& raster_pixel, const Scene& scene) const;
     // Modify a pixel color after lighting calculation is performed.
     // pixel_color - color of a pixel existing before lighting calculation.
     //               Calculations will alter this value.

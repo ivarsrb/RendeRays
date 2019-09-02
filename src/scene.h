@@ -8,7 +8,8 @@
 // Stores renderable data, lights and camera
 class Scene {
 public:
-    Scene();
+    Scene(const t::Vec3& background_color);
+    const t::Vec3& GetBackgroundColor() const;
     void AddCanera(const Camera& camera);
     const std::vector<Camera>& GetCameras() const;
     void AddRenderable(std::unique_ptr<renderable::IRenderable> renderable);
@@ -16,6 +17,8 @@ public:
     void SetLight(std::unique_ptr<light::ICaster> light);
     const std::unique_ptr<light::ICaster>& GetLight() const;
 private:
+    // Image background color
+    const t::Vec3 background_color_;
     // There can be multiple predefined scene vantaga point
     std::vector<Camera> cameras_;
     // Interface pointer vector to base class if renderable objects

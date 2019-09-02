@@ -1,8 +1,11 @@
 #include "scene.h"
-#include <stdexcept>
 
-// Scene invariant establishes that scene has to have at least one camera
-Scene::Scene() {
+Scene::Scene(const t::Vec3& background_color) : 
+    background_color_(background_color) {
+}
+
+const t::Vec3& Scene::GetBackgroundColor() const {
+    return background_color_;
 }
 
 void Scene::AddCanera(const Camera& camera) {
