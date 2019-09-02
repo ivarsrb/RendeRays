@@ -1,8 +1,8 @@
 #include "application.h"
 #include "render_target.h"
 #include "camera.h"
-#include "directional_light.h"
 #include "light/ambient.h"
+#include "light/directional.h"
 #include "renderable/sphere.h"
 #include "renderable/aa_box.h"
 #include "util/timing.h"
@@ -16,9 +16,9 @@ Application::Application() :
     render_buffer_(t::Size16{ PIXEL_WIDTH, PIXEL_HEIGHT }, t::kColorGray) {
     // Describe a scene
     scene_.AddCanera(Camera(t::Vec3(0.0, 0.0, 5.0), 0.0, 60.0, t::Size16{ PIXEL_WIDTH , PIXEL_HEIGHT }));
-    //scene_.SetDirectionalLight(DirectionalLight(t::Vec3(1.5, -1.0, -1.0)));
-    scene_.SetLight(std::make_unique<light::Ambient>(t::Vec3(1.0, 1.0, 1.0)));
-    
+    //scene_.SetLight(std::make_unique<light::Ambient>(t::Vec3(1.0, 1.0, 1.0)));
+    scene_.SetLight(std::make_unique<light::Directional>(t::Vec3(1.5, -1.0, -1.0), t::Vec3(0.2, 0.2, 0.2), t::Vec3(1.0, 1.0, 1.0)));
+
     scene_.AddRenderable(std::make_unique<renderable::Sphere>(t::Vec3(-1.0, 0.0, -1.0), 0.5f, t::kColorRed));
     //scene_.AddRenderable(std::make_unique<renderable::Sphere>(t::Vec3(0.0, 0.0, -5.0), 1.5f, t::kColorRed));
     //scene_.AddRenderable(std::make_unique<renderable::Sphere>(t::Vec3(4.5, 0.0, -7.0), 0.5f, t::kColorBlue));

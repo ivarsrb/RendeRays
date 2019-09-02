@@ -2,8 +2,8 @@
 #include <tuple>
 #include <util/types.h>
 
-
-// Interface to light sources used to light the scene
+// Interface to light sources used to light the scene.
+// Phong shading model is used
 namespace light {
 class ICaster {
 public:
@@ -14,6 +14,12 @@ public:
     const t::Vec3& GetAmbient() const;
     const t::Vec3& GetDiffuse() const;
     const t::Vec3& GetSpecular() const;
+    // Get altered diffuse color value that is calculated based on normal
+    // vector provided through param
+    // If there is only ambient light, this function returns base diffuse color.
+    // If light source exists this function is free to implement lighting calculations
+    // suited for specific light caster type
+    virtual t::Vec3 GetDiffuseLit(const t::Vec3& normal) const;
 protected:
     // Ambient color component of the light
     // Can also be thought as global illumination.

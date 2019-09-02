@@ -28,12 +28,3 @@ void Scene::SetLight(std::unique_ptr<light::ICaster> light) {
 const std::unique_ptr<light::ICaster>& Scene::GetLight() const {
     return light_;
 }
-
-void Scene::SetDirectionalLight(const DirectionalLight& light) {
-    //light.GetDirection();
-    directional_light.emplace(light);
-}
-
-const std::optional<DirectionalLight>& Scene::GetDirectionalLight() const {
-    return directional_light;
-}

@@ -16,5 +16,9 @@ const t::Vec3& ICaster::GetDiffuse() const {
 const t::Vec3& ICaster::GetSpecular() const {
     return specular_;
 }
+
+t::Vec3 ICaster::GetDiffuseLit(const t::Vec3& normal) const {
+    return diffuse_;
+}
 ;
 }; // light
