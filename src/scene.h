@@ -19,7 +19,7 @@ public:
 private:
     // Image background color
     const t::Vec3 background_color_;
-    // There can be multiple predefined scene vantaga point
+    // There can be multiple predefined scene vantaga points
     std::vector<Camera> cameras_;
     // Interface pointer vector to base class if renderable objects
     std::vector<std::unique_ptr<renderable::IRenderable>> renderables_;
