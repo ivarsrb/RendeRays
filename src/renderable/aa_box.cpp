@@ -47,7 +47,7 @@ bool AABox::Intersect(const Ray& ray, Hit& hit) const {
     return true;
 }
 
-// It is not  necessary to normalize the result here
+// It is not necessary to normalize the result here
 // Algorith idea - find normal as if AA box is a sphere and
 // point the normal to direction to which found normal points "the most".
 t::Vec3 AABox::GetNormal(const t::Vec3& point_on_surface) const { 

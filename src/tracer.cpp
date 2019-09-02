@@ -1,7 +1,6 @@
 #include "tracer.h"
 #include <algorithm>
 #include "ray.h"
-#include "hit.h"
 
 Tracer::Tracer() {
 }
@@ -16,21 +15,25 @@ void Tracer::Render(const Scene& scene, RenderBuffer& render_buffer) const {
             t::F32 nearest_hit_distance = t::kInfinity32;
             // Get a ray going from camera world position to image plane point that
             // corresponds to given pixel in raster space
-            Ray primary_ray = scene.GetCameras().at(0).CastPrimaryRay(raster_pixel);
+            const Ray primary_ray = scene.GetCameras().at(0).CastPrimaryRay(raster_pixel);
             for (const auto& renderable : scene.GetRenderables()) {
                 // Does this ray hit the object and if 'yes' then check if this object lies in front of object.
                 if (Hit hit; renderable.get()->Intersect(primary_ray, hit) && hit.GetDistance() < nearest_hit_distance) {
                     nearest_hit_distance = hit.GetDistance();
                     // Determine final pixel color by lighting
                     t::Vec3 pixel_color = renderable.get()->GetColor();
-                    if (scene.GetDirectionalLight().has_value()) {
-                        t::F32 light_intensity = std::max(glm::dot(hit.GetSurfaceNormal(),
-                            scene.GetDirectionalLight().value().GetDirection()), 0.0f);
-                        pixel_color *= light_intensity;
-                    }
+                    CalculateLighting(pixel_color, scene, hit);
                     render_buffer.SetColor(raster_pixel, pixel_color);
                 }
             }
         }
+    }
+}
+
+void Tracer::CalculateLighting(t::Vec3& pixel_color, const Scene& scene, const Hit& hit) const {
+    if (scene.GetDirectionalLight().has_value()) {
+        t::F32 light_intensity = std::max(glm::dot(hit.GetSurfaceNormal(),
+            scene.GetDirectionalLight().value().GetDirection()), 0.0f);
+        pixel_color *= light_intensity;
     }
 }
