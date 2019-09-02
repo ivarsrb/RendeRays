@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 #include <vector>
 #include <memory>
 #include "camera.h"
@@ -8,7 +9,8 @@
 // Stores renderable data, lights and camera
 class Scene {
 public:
-    Scene(const t::Vec3& background_color);
+    Scene(const std::string& name, const t::Vec3& background_color);
+    const std::string& GetName() const;
     const t::Vec3& GetBackgroundColor() const;
     void AddCanera(const Camera& camera);
     const std::vector<Camera>& GetCameras() const;
@@ -17,6 +19,8 @@ public:
     void SetLight(std::unique_ptr<light::ICaster> light);
     const std::unique_ptr<light::ICaster>& GetLight() const;
 private:
+    // Name of the scene
+    const std::string name_;
     // Image background color
     const t::Vec3 background_color_;
     // There can be multiple predefined scene vantaga points

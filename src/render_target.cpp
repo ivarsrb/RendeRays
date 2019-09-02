@@ -3,8 +3,8 @@
 #include <sstream> 
 #include "util/log.h"
 
-RenderTarget::RenderTarget(std::string_view filename) : 
-    filename_(filename) {
+RenderTarget::RenderTarget(const std::string& scene_name, t::U16 render_id) :
+    filename_(BuildFileName(scene_name, render_id)) {
 }
 
 // This function writes one particular type of PPM file
@@ -42,7 +42,13 @@ void RenderTarget::Write(const t::ColorBuffer& buffer, const t::Size16& dimensio
 
 void RenderTarget::Show() const {
     // File path opens the image file in default viewer
-    system(filename_.c_str());
+    system(filename_ .c_str());
+}
+
+std::string RenderTarget::BuildFileName(const std::string& scene_name, t::U16 render_id) const {
+    const std::string file_name = "output\\" + scene_name + "_render_" + std::to_string(render_id) + ".ppm";;
+    
+    return file_name;
 }
 
 t::U32 RenderTarget::MapColorToInteger(t::F32 color_val) const{

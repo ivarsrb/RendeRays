@@ -13,11 +13,11 @@
 #define PIXEL_HEIGHT 600
 
 Application::Application() : 
-    scene_(t::kColorGray),
+    scene_("test_scene", t::kColorGray),
     render_buffer_(t::Size16{ PIXEL_WIDTH, PIXEL_HEIGHT }, t::kColorWhite) {
     // Describe a scene
     scene_.AddCanera(Camera(t::Vec3(0.0, 0.0, 5.0), 0.0, 60.0, t::Size16{ PIXEL_WIDTH , PIXEL_HEIGHT }));
-    scene_.AddCanera(Camera(t::Vec3(5.0, 0.0, 0.0), 90.0, 60.0, t::Size16{ PIXEL_WIDTH , PIXEL_HEIGHT }));
+    //scene_.AddCanera(Camera(t::Vec3(5.0, 0.0, 0.0), 90.0, 60.0, t::Size16{ PIXEL_WIDTH , PIXEL_HEIGHT }));
     //scene_.SetLight(std::make_unique<light::Ambient>(t::Vec3(1.0, 1.0, 1.0)));
     scene_.SetLight(std::make_unique<light::Directional>(t::Vec3(1.5, -1.0, -1.0), t::Vec3(0.2, 0.2, 0.2), t::Vec3(1.0, 1.0, 1.0)));
 
@@ -33,15 +33,15 @@ Application::Application() :
 void Application::Run() {
     for (size_t camera_id = 0; camera_id < scene_.GetCameras().size(); ++camera_id) {
         render_buffer_.Clear(t::kColorWhite);
-        util::Log::Info("Rendering the scene...");
+        util::Log::Info("Rendering the scene '" + scene_.GetName() + "'. Render nr. " + 
+            std::to_string(camera_id)  +  "...");
         util::Timing timer;
         tracer_.Render(scene_, scene_.GetCameras().at(camera_id), render_buffer_);
         timer.SetTime2(true);
-        util::Log::Info("Presenting to render target...");
+        util::Log::Info("Presenting scene '" + scene_.GetName() + "' to render target...");
         timer.SetTime1();
         // Medium to whitch final render is stored
-        const std::string file_name = "output\\render_" + std::to_string(camera_id) + ".ppm";;
-        RenderTarget render_target(file_name);
+        RenderTarget render_target(scene_.GetName(), camera_id);
         render_buffer_.PresentTo(render_target);
         timer.SetTime2(true);
         render_target.Show();

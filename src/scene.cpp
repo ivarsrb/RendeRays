@@ -1,7 +1,12 @@
 #include "scene.h"
 
-Scene::Scene(const t::Vec3& background_color) : 
+Scene::Scene(const std::string& name, const t::Vec3& background_color) :
+    name_(name),
     background_color_(background_color) {
+}
+
+const std::string& Scene::GetName() const {
+    return name_;
 }
 
 const t::Vec3& Scene::GetBackgroundColor() const {
