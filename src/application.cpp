@@ -17,7 +17,10 @@ Application::Application() :
     render_buffer_(t::Size16{ PIXEL_WIDTH, PIXEL_HEIGHT }, t::kColorWhite) {
     // Describe a scene
     scene_.AddCanera(Camera(t::Vec3(0.0, 0.0, 5.0), 0.0, 60.0, t::Size16{ PIXEL_WIDTH , PIXEL_HEIGHT }));
-    //scene_.AddCanera(Camera(t::Vec3(5.0, 0.0, 0.0), 90.0, 60.0, t::Size16{ PIXEL_WIDTH , PIXEL_HEIGHT }));
+    scene_.AddCanera(Camera(t::Vec3(5.0, 0.0, 0.0), 90.0, 60.0, t::Size16{ PIXEL_WIDTH , PIXEL_HEIGHT }));
+    scene_.AddCanera(Camera(t::Vec3(0.0, 0.0, -5.0), 180.0, 60.0, t::Size16{ PIXEL_WIDTH , PIXEL_HEIGHT }));
+    scene_.AddCanera(Camera(t::Vec3(-5.0, 0.0, 0.0), 270.0, 60.0, t::Size16{ PIXEL_WIDTH , PIXEL_HEIGHT }));
+
     //scene_.SetLight(std::make_unique<light::Ambient>(t::Vec3(1.0, 1.0, 1.0)));
     scene_.SetLight(std::make_unique<light::Directional>(t::Vec3(1.5, -1.0, -1.0), t::Vec3(0.2, 0.2, 0.2), t::Vec3(1.0, 1.0, 1.0)));
 

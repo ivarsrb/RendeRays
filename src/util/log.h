@@ -31,12 +31,8 @@ public:
         }
     }
 
-    // When disabled nothing is written to log
-#ifdef NDEBUG
-    static constexpr bool enabled = false;
-#else
     static constexpr bool enabled = true;
-#endif
+
     // Setting below matter only when logging is enabled
     // Where to write log
     static constexpr Type output = kClog;
