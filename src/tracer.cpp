@@ -1,7 +1,7 @@
 #include "tracer.h"
 #include <algorithm>
 #include "ray.h"
-
+#include <glm/common.hpp>
 Tracer::Tracer() {
 }
 
@@ -30,10 +30,25 @@ void Tracer::Render(const Scene& scene, RenderBuffer& render_buffer) const {
     }
 }
 
+// Lighting is implemented using Phong shading.
+// Final color of the object is calculated as:
+//  final_color = ( ambient + diffuse + specular) * object_color
 void Tracer::CalculateLighting(t::Vec3& pixel_color, const Scene& scene, const Hit& hit) const {
+    t::Vec3 ambient = scene.GetLight().get()->GetAmbient();
+    t::Vec3 diffuse = scene.GetLight().get()->GetDiffuse();
+    t::Vec3 specular = scene.GetLight().get()->GetSpecular();
+
+
+
+    // Apply all colors and make sure they dont exceed 0 - 1 barrier
+    pixel_color *= glm::clamp((ambient + diffuse + specular), 0.0f, 1.0f);
+    /*
     if (scene.GetDirectionalLight().has_value()) {
         t::F32 light_intensity = std::max(glm::dot(hit.GetSurfaceNormal(),
             scene.GetDirectionalLight().value().GetDirection()), 0.0f);
         pixel_color *= light_intensity;
     }
+    */
+
+
 }

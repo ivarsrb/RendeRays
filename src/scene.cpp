@@ -21,6 +21,14 @@ const std::vector<std::unique_ptr<renderable::IRenderable>>& Scene::GetRenderabl
     return renderables_;
 }
 
+void Scene::SetLight(std::unique_ptr<light::ICaster> light) {
+    light_ = std::move(light);
+}
+
+const std::unique_ptr<light::ICaster>& Scene::GetLight() const {
+    return light_;
+}
+
 void Scene::SetDirectionalLight(const DirectionalLight& light) {
     //light.GetDirection();
     directional_light.emplace(light);

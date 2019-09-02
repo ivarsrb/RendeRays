@@ -12,10 +12,10 @@ public:
     // Accepts scene to be rendered and render_buffer to write color values to
     void Render(const Scene& scene, RenderBuffer& render_buffer) const;
 private:
-    // Return a pixel color after lighting calculation is
-    // performed.
+    // Modify a pixel color after lighting calculation is performed.
     // pixel_color - color of a pixel existing before lighting calculation.
-    //               Calculations will alter this value
+    //               Calculations will alter this value.
+    //               Usually this value is an object color.
     // scene - stores lighting information.
     // hit - information about current ray-object collision.
     void CalculateLighting(t::Vec3& pixel_color, const Scene& scene, const Hit& hit) const;

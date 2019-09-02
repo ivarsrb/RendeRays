@@ -32,6 +32,8 @@
     <ClCompile Include="src\directional_light.cpp" />
     <ClCompile Include="src\external\glm\detail\glm.cpp" />
     <ClCompile Include="src\hit.cpp" />
+    <ClCompile Include="src\light\ambient.cpp" />
+    <ClCompile Include="src\light\i_caster.cpp" />
     <ClCompile Include="src\ray.cpp" />
     <ClCompile Include="src\renderable\aa_box.cpp" />
     <ClCompile Include="src\renderable\i_renderable.cpp" />
@@ -308,6 +310,8 @@
     <ClInclude Include="src\external\glm\vec4.hpp" />
     <ClInclude Include="src\external\glm\vector_relational.hpp" />
     <ClInclude Include="src\hit.h" />
+    <ClInclude Include="src\light\ambient.h" />
+    <ClInclude Include="src\light\i_caster.h" />
     <ClInclude Include="src\renderable\aa_box.h" />
     <ClInclude Include="src\renderable\i_renderable.h" />
     <ClInclude Include="src\renderable\sphere.h" />
