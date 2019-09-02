@@ -20,6 +20,9 @@ private:
     bool IntersectGeometric(const Ray& ray, t::F32& t0, t::F32& t1) const;
     bool IntersectAnalytic(const Ray& ray, t::F32& t0, t::F32& t1) const;
     bool SolveQuadratic(t::F32 a, t::F32 b, t::F32 c, t::F32& x0, t::F32& x1) const;
+    // Get surface normal at given surface point
+    // It's not necessary to normalize the result
+    t::Vec3 GetNormal(const t::Vec3& point_on_surface) const;
     const t::Vec3 center_;
     const t::F32 radius_;
 };

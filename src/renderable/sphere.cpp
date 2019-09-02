@@ -29,13 +29,13 @@ bool Sphere::Intersect(const Ray& ray, Hit& hit) const {
         if (solution_0 >= 0) {
             hit.SetDistance(solution_0);
             // Calculate surface normal
-            hit.SetSurfaceNormal(ray.GetPoint(solution_0) - center_);
+            hit.SetSurfaceNormal(GetNormal(ray.GetPoint(solution_0)));
         }
         // If  smallest solution is negative, let the solution be the biggest one
         else if (solution_1 >= 0) {
             hit.SetDistance(solution_1);
             // Calculate surface normal
-            hit.SetSurfaceNormal(ray.GetPoint(solution_1) - center_);
+            hit.SetSurfaceNormal(GetNormal(ray.GetPoint(solution_1)));
         }
         // Both solutions are negative, sphere is behind ray origin
         else {
@@ -115,6 +115,11 @@ bool Sphere::SolveQuadratic(t::F32 a, t::F32 b, t::F32 c, t::F32& x0, t::F32& x1
     }
 
     return true;
+}
+
+// It is ok for returned value to not be optimised
+t::Vec3 Sphere::GetNormal(const t::Vec3& point_on_surface) const {
+    return point_on_surface - center_;
 }
 }; //renderable
 

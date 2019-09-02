@@ -15,6 +15,9 @@ public:
     // If no hit occurs, distance is not modified.
     virtual bool Intersect(const Ray& ray, Hit& hit) const override;
 private:
+    // Get surface normal at given surface point
+// It's not necessary to normalize the result
+    t::Vec3 GetNormal(const t::Vec3& point_on_surface) const;
     // Center of the cube
     const t::Vec3 center_;
     // Size from center to outer edge (analogue to sphere radius)
