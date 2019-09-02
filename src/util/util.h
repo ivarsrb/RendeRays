@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 #include "types.h"
 
 // Various utility functions
@@ -8,7 +9,9 @@ template <typename T>
 T NANtoNum(T value) {
     return std::isnan(value) ? std::numeric_limits<T>::min() : value;
 }
-
 // Check all vector components for NaN
 void VectorNANtoNum(t::Vec3& vec);
+// Strip given string from illigal characters.
+// Meant for file names sfety.
+std::string StripIlligallChars(const std::string& text);
 }; // util

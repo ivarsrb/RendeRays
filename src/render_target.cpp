@@ -2,6 +2,7 @@
 #include <fstream>
 #include <sstream> 
 #include "util/log.h"
+#include "util/util.h"
 
 RenderTarget::RenderTarget(const std::string& scene_name, t::U16 render_id) :
     filename_(BuildFileName(scene_name, render_id)) {
@@ -46,7 +47,8 @@ void RenderTarget::Show() const {
 }
 
 std::string RenderTarget::BuildFileName(const std::string& scene_name, t::U16 render_id) const {
-    const std::string file_name = "output\\" + scene_name + "_render_" + std::to_string(render_id) + ".ppm";;
+    const std::string file_name = "output\\" + util::StripIlligallChars(scene_name) + "_render_" + 
+        std::to_string(render_id) + ".ppm";;
     
     return file_name;
 }

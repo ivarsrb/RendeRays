@@ -13,7 +13,7 @@
 #define PIXEL_HEIGHT 600
 
 Application::Application() : 
-    scene_("test_scene", t::kColorGray),
+    scene_("Test scene", t::kColorGray),
     render_buffer_(t::Size16{ PIXEL_WIDTH, PIXEL_HEIGHT }, t::kColorWhite) {
     // Describe a scene
     scene_.AddCanera(Camera(t::Vec3(0.0, 0.0, 5.0), 0.0, 60.0, t::Size16{ PIXEL_WIDTH , PIXEL_HEIGHT }));
@@ -41,7 +41,7 @@ void Application::Run() {
         util::Log::Info("Presenting scene '" + scene_.GetName() + "' to render target...");
         timer.SetTime1();
         // Medium to whitch final render is stored
-        RenderTarget render_target(scene_.GetName(), camera_id);
+        RenderTarget render_target(scene_.GetName(), static_cast<t::U16>(camera_id));
         render_buffer_.PresentTo(render_target);
         timer.SetTime2(true);
         render_target.Show();
