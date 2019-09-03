@@ -2,9 +2,11 @@
 #include "render_target.h"
 #include "util/timing.h"
 #include "util/log.h"
+#include "util/util.h"
 
 Application::Application(int argc, char* argv[]) :
-    scene_("scenes/scene.json"),
+    cmd_line_parser_(argc, argv),
+    scene_("scenes/" + util::StripIlligallChars(cmd_line_parser_.GetOption("-f"))),
     render_buffer_(scene_.GetOutputSize(), t::kColorWhite) {
 }
 
@@ -24,6 +26,9 @@ void Application::Run() {
         RenderTarget render_target(scene_.GetName(), static_cast<t::U16>(camera_id));
         render_buffer_.PresentTo(render_target);
         timer.SetTime2(true);
-        render_target.Show();
+        // If showing is enabled
+        if (cmd_line_parser_.OptionExists("-s")) {
+            render_target.Show();
+        }
     }
 }
