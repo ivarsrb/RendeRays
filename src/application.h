@@ -10,6 +10,8 @@ public:
     Application(int argc, char* argv[]);
     void Run();
 private:
+    // Construct and escape scene file name
+    std::string GetSceneFileName(const std::string& file_name) const;
     const util::CmdLineParser cmd_line_parser_;
     // Renderable data is stored in scene
     Scene scene_;

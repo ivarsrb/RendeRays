@@ -6,7 +6,7 @@
 
 Application::Application(int argc, char* argv[]) :
     cmd_line_parser_(argc, argv),
-    scene_("scenes/" + util::StripIlligallChars(cmd_line_parser_.GetOption("-f"))),
+    scene_(GetSceneFileName(cmd_line_parser_.GetOption("-f"))),
     render_buffer_(scene_.GetOutputSize(), t::kColorWhite) {
 }
 
@@ -31,4 +31,10 @@ void Application::Run() {
             render_target.Show();
         }
     }
+}
+
+// File is looked for in subfolder that is relative to executable
+std::string Application::GetSceneFileName(const std::string& file_name) const {
+    const std::string sub_folder = "scenes/";
+    return std::string(sub_folder + util::StripIlligallChars(file_name));
 }
