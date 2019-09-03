@@ -18,7 +18,9 @@ public:
     // Call right before measurable code
     void SetTime1();
     // Call right after measurable code
-    void SetTime2(bool show_time);
+    // Return miliseconds since SetTime1() function call
+    // If true passed, print miliseconds on screen
+    t::U64 SetTime2(bool show_time);
     void Print() const;
 private:
     // Reset all data to 0

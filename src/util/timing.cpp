@@ -14,13 +14,14 @@ void Timing::SetTime1() {
 }
 
 // Mark the second time point and show the difference if passed true
-void Timing::SetTime2(bool show_time) {
+t::U64 Timing::SetTime2(bool show_time) {
     time_point_2_ = std::chrono::steady_clock::now();
     // Save in case printing is done later
     duration_ = GetDuration();
     if (show_time) {
         Print();
     }
+    return duration_;
 }
 
 void Timing::Reset() {

@@ -13,21 +13,23 @@ Application::Application(int argc, char* argv[]) :
 // Execution of a rendering and storage process
 // From each vantage point one-by-one.
 void Application::Run() {
+    util::Log::Info("Rendering the scene '" + scene_.GetName() + "'.");
+    util::Timing timer;
     for (size_t camera_id = 0; camera_id < scene_.GetCameras().size(); ++camera_id) {
         render_buffer_.Clear(t::kColorWhite);
-        util::Log::Info("Rendering the scene '" + scene_.GetName() + "'. Render nr. " + 
-            std::to_string(camera_id)  +  "...");
-        util::Timing timer;
+        util::Log::Info("Render for camera nr. " + std::to_string(camera_id)  +  "...");
+        timer.SetTime1();
         tracer_.Render(scene_, scene_.GetCameras().at(camera_id), render_buffer_);
-        timer.SetTime2(true);
-        util::Log::Info("Presenting scene '" + scene_.GetName() + "' to render target...");
+        util::Log::Info("... " + std::to_string(timer.SetTime2(false)), " ms");
+        util::Log::Info("Presenting render for camera nr. " + std::to_string(camera_id) + " to render target...");
         timer.SetTime1();
         // Medium to whitch final render is stored
         RenderTarget render_target(scene_.GetName(), static_cast<t::U16>(camera_id));
         render_buffer_.PresentTo(render_target);
-        timer.SetTime2(true);
+        util::Log::Info("... " + std::to_string(timer.SetTime2(false)), " ms");
         // If showing is enabled
         if (cmd_line_parser_.OptionExists("-s")) {
+            // Blocking call
             render_target.Show();
         }
     }

@@ -86,6 +86,7 @@ void Scene::LoadBackground(const util::JSONLoader::JsonType& json_data) {
 }
 
 void Scene::LoadCameras(const util::JSONLoader::JsonType& json_data) {
+    t::U16 camera_counter = 0;
     for (const auto& camera : json_data) {
         if (camera.at("type").get<std::string>() == "perspective") {
             const std::vector<t::F32> translation = camera.at("translation");
@@ -93,8 +94,9 @@ void Scene::LoadCameras(const util::JSONLoader::JsonType& json_data) {
             const t::F32 fov = camera.at("fov");
             AddCanera(Camera(t::Vec3(translation.at(0), translation.at(1), translation.at(2)),
                 rotation_y, fov, output_size_));
-            util::Log::Info("Perspective camera: position - (", translation[0], ",", translation[1], ",",
+            util::Log::Info("Perspective camera ", camera_counter,": position - (", translation[0], ",", translation[1], ",",
                 translation[2], "), y rot. - ", rotation_y, ", fov - ", fov);
+            camera_counter++;
         }
     }
     if (cameras_.size() == 0) {
