@@ -4,7 +4,7 @@
 #include "util/log.h"
 
 Application::Application() : 
-    scene_("scene.json"),
+    scene_("scenes/scene.json"),
     render_buffer_(scene_.GetOutputSize(), t::kColorWhite) {
 }
 

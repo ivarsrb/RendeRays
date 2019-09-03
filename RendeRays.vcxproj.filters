@@ -1267,6 +1267,6 @@
     <None Include="src\external\glm\gtx\wrap.inl">
       <Filter>Header Files</Filter>
     </None>
-    <None Include="product\scene.json" />
+    <None Include="product\scenes\scene.json" />
   </ItemGroup>
 </Project>
