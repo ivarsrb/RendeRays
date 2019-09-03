@@ -5,6 +5,7 @@
 #include "camera.h"
 #include "renderable/i_renderable.h"
 #include "light/i_caster.h"
+#include <util/json_loader.h>
 
 // Stores renderable data, lights and camera
 class Scene {
@@ -22,6 +23,13 @@ public:
 private:
     // Load the scene contents from given json file
     void LoadFromJson(const std::string& file_name);
+    // Load each scene element from json structure
+    void LoadName(const util::JSONLoader::JsonType& json_data);
+    void LoadRasterSize(const util::JSONLoader::JsonType& json_data);
+    void LoadBackground(const util::JSONLoader::JsonType& json_data);
+    void LoadCameras(const util::JSONLoader::JsonType& json_data);
+    void LoadLight(const util::JSONLoader::JsonType& json_data);
+    void LoadRenderables(const util::JSONLoader::JsonType& json_data);
     // Output size in raster pixels
     t::Size16 output_size_;
     // Name of the scene
