@@ -9,7 +9,8 @@
 // Stores renderable data, lights and camera
 class Scene {
 public:
-    Scene(const std::string& name, const t::Vec3& background_color);
+    Scene(const std::string& file_name);
+    const t::Size16& GetOutputSize() const;
     const std::string& GetName() const;
     const t::Vec3& GetBackgroundColor() const;
     void AddCanera(const Camera& camera);
@@ -19,10 +20,14 @@ public:
     void SetLight(std::unique_ptr<light::ICaster> light);
     const std::unique_ptr<light::ICaster>& GetLight() const;
 private:
+    // Load the scene contents from given json file
+    void LoadFromJson(const std::string& file_name);
+    // Output size in raster pixels
+    t::Size16 output_size_;
     // Name of the scene
-    const std::string name_;
+    std::string name_;
     // Image background color
-    const t::Vec3 background_color_;
+    t::Vec3 background_color_;
     // There can be multiple predefined scene vantaga points
     std::vector<Camera> cameras_;
     // Interface pointer vector to base class if renderable objects

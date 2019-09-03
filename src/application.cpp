@@ -1,34 +1,11 @@
 #include "application.h"
 #include "render_target.h"
-#include "camera.h"
-#include "light/ambient.h"
-#include "light/directional.h"
-#include "renderable/sphere.h"
-#include "renderable/aa_box.h"
 #include "util/timing.h"
 #include "util/log.h"
 
-
-#define PIXEL_WIDTH 400
-#define PIXEL_HEIGHT 300
-
 Application::Application() : 
-    scene_("Test scene", t::kColorGray),
-    render_buffer_(t::Size16{ PIXEL_WIDTH, PIXEL_HEIGHT }, t::kColorWhite) {
-    // Describe a scene
-    scene_.AddCanera(Camera(t::Vec3(0.0, 0.0, 5.0), 0.0, 60.0, t::Size16{ PIXEL_WIDTH , PIXEL_HEIGHT }));
-   // scene_.AddCanera(Camera(t::Vec3(5.0, 0.0, 0.0), 90.0, 60.0, t::Size16{ PIXEL_WIDTH , PIXEL_HEIGHT }));
-   // scene_.AddCanera(Camera(t::Vec3(0.0, 0.0, -5.0), 180.0, 60.0, t::Size16{ PIXEL_WIDTH , PIXEL_HEIGHT }));
-   // scene_.AddCanera(Camera(t::Vec3(-5.0, 0.0, 0.0), 270.0, 60.0, t::Size16{ PIXEL_WIDTH , PIXEL_HEIGHT }));
-
-    //scene_.SetLight(std::make_unique<light::Ambient>(t::Vec3(1.0, 1.0, 1.0)));
-    scene_.SetLight(std::make_unique<light::Directional>(t::Vec3(1.5, -1.0, -1.0), t::Vec3(0.2, 0.2, 0.2), t::Vec3(1.0, 1.0, 1.0)));
-
-    scene_.AddRenderable(std::make_unique<renderable::Sphere>(t::Vec3(-1.0, 0.0, -1.0), 0.5f, t::kColorRed));
-    //scene_.AddRenderable(std::make_unique<renderable::Sphere>(t::Vec3(0.0, 0.0, -5.0), 1.5f, t::kColorRed));
-    //scene_.AddRenderable(std::make_unique<renderable::Sphere>(t::Vec3(4.5, 0.0, -7.0), 0.5f, t::kColorBlue));
-    scene_.AddRenderable(std::make_unique<renderable::AABox>(t::Vec3(2.0, 1.5, 0.0), 1.0f, t::kColorGreen));
-    scene_.AddRenderable(std::make_unique<renderable::AABox>(t::Vec3(3.0, 0.0, -5.0), 0.5f, t::kColorBlue));
+    scene_("scene.json"),
+    render_buffer_(scene_.GetOutputSize(), t::kColorWhite) {
 }
 
 // Execution of a rendering and storage process

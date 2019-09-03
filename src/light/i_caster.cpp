@@ -1,9 +1,9 @@
 #include "i_caster.h"
 namespace light {
 ICaster::ICaster(const t::Vec3 ambient, const t::Vec3 diffuse, const t::Vec3 specular) :
-    ambient_(ambient),
-    diffuse_(diffuse),
-    specular_(specular) {
+    ambient_(glm::clamp((ambient), 0.0f, 1.0f)),
+    diffuse_(glm::clamp((diffuse), 0.0f, 1.0f)),
+    specular_(glm::clamp((specular), 0.0f, 1.0f)) {
 }
 const t::Vec3& ICaster::GetAmbient() const {
     return ambient_;

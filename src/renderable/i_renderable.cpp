@@ -2,7 +2,7 @@
 
 namespace renderable {
 IRenderable::IRenderable(const t::Vec3& color) :
-    color_(color) {
+    color_(glm::clamp((color), 0.0f, 1.0f)) {
 }
 
 const t::Vec3& IRenderable::GetColor() const {
