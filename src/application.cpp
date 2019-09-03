@@ -3,7 +3,7 @@
 #include "util/timing.h"
 #include "util/log.h"
 
-Application::Application() : 
+Application::Application(int argc, char* argv[]) :
     scene_("scenes/scene.json"),
     render_buffer_(scene_.GetOutputSize(), t::kColorWhite) {
 }

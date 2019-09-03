@@ -6,7 +6,7 @@
 // Class that brings all unrelated parts together to form a ray tracer
 class Application {
 public:
-    Application();
+    Application(int argc, char* argv[]);
     void Run();
 private:
     // Renderable data is stored in scene

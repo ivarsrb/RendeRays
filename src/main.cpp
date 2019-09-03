@@ -9,9 +9,9 @@ In 'Debug' and 'Release' builds those unit test files are excluded.
 #include "application.h"
 #include "util/log.h"
 
-int main() {
+int main(int argc, char* argv[]) {
     try {
-        Application app;
+        Application app(argc, argv);
         app.Run();
     }
     catch (const std::exception &e) {
