@@ -159,5 +159,6 @@ coordinate system.
 - Add ability to save images as *.jpg* and *.png* files.
 - Add orthographic camera type.
 - Add material system for renderables.
+- Add shadows.
 ## Author
 Designed and developed by [Ivars Rb.](https://github.com/ivarsrb)
