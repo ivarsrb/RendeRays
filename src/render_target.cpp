@@ -36,8 +36,6 @@ void RenderTarget::Write(const t::ColorBuffer& buffer, const t::Size16& dimensio
         file_contents.append("\n");
     }
     ofs.write(file_contents.c_str(), file_contents.size());
-  
-    ofs.close();
     util::Log::Info("Color data of a size ", dimensions.width, "x", dimensions.height, " saved to file ", filename_);
 }
 
