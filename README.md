@@ -8,6 +8,12 @@
 	* [Usage example](#usage-example)
 	* [For developers](#for-developers)
 * [Scene file description](#scene-file-description)
+	* [Name](#name)
+	* [Output image size](#output-image-size)
+	* [Background color](#background-color)
+	* [Cameras](#cameras)
+	* [Light source](#light-source)
+	* [Objects to render](#objects-to-render)
 ### General info
 Rendering static images of a scene using ray-tracing technique. 
 Used for rendering studies and computer vision applications as a source for test images.
