@@ -14,6 +14,8 @@
 	* [Cameras](#cameras)
 	* [Light source](#light-source)
 	* [Objects to render](#objects-to-render)
+* [TODOs](#todos)
+* [Author](#author)
 ### General info
 Rendering static images of a scene using ray-tracing technique. 
 Used for rendering studies and computer vision applications as a source for test images.
@@ -151,3 +153,11 @@ To describe axis-aligned cube use:
 where *'translation'* describes the box center in 3d space, *'half_size'* defines half-size of the box,
 and *'color'* describes it's appearance.  *Axis-aligned* means that edges of the cube are always paralel to axis of
 coordinate system.
+## TODOs
+- Add point light.
+- Add triangle as renderable.
+- Add ability to save images as *.jpg* and *.png* files.
+- Add orthographic camera type.
+- Add material system for renderables.
+## Author
+Designed and developed by @ivarsrb
