@@ -1,5 +1,5 @@
 # RendeRays raytracer
-![Screenshot](screenshot.jpg)
+<img src="screenshot.jpg" alt="Screenshot" width="400"/>
 ## Table of contents
 * [General info](#general-info)
 * [Technologies](#technologies)
