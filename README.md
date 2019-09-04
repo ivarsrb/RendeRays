@@ -1,5 +1,5 @@
 # RendeRays raytracer
-![Screenshot](screenshot.ppm)
+![Screenshot](screenshot.jpg)
 ## Table of contents
 * [General info](#general-info)
 * [Technologies](#technologies)
