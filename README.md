@@ -17,8 +17,8 @@
 * [TODOs](#todos)
 * [Author](#author)
 ### General info
-Rendering static images of a scene using ray-tracing technique. 
-Used for rendering studies and computer vision applications as a source for test images.
+RendeRays is an application that is used for rendering static images of a geometric scene using ray-tracing technique. 
+Applicable for rendering studies and computer vision applications as a source for test images.
 ### Technologies
 *RendeRays* is developed in C++ and compiled with C++17 compatable compiler.
 The application is tested with Visual Studio 2019, however, any C++17 compiler should work.  
@@ -33,7 +33,7 @@ To start rendering the scene described in 'scene/test_scene.json' file and displ
 > RendeRays.exe -f test_scene.json -s
 #### For developers
 In Visual Studio: after cloning the repo go to *'Project properties'* and select *'Debugging'* section:  
-- Add *'Cmmand arguments'* as described above.
+- Add *'Command arguments'* as described above.
 - Set *'Working directory'* to location of the application .exe file.
 ### Scene file description
 Scenes are described in *.json* files with the following pseudo-structure:
