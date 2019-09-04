@@ -160,4 +160,4 @@ coordinate system.
 - Add orthographic camera type.
 - Add material system for renderables.
 ## Author
-Designed and developed by @ivarsrb
+Designed and developed by [Ivars Rb.](https://github.com/ivarsrb)
