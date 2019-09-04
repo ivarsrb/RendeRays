@@ -1,7 +1,7 @@
 {
   "name": "test scene",
   "output_size": [ 800, 600 ],
-  "background": [ 0.3, 0.3, 0.3 ],
+  "background": [ 0.8, 0.9, 1.0 ],
   "cameras": [
     {
       "type": "perspective",
@@ -28,6 +28,12 @@
       "translation": [ -1.0, 0.0, -1.0 ],
       "radius": 0.5,
       "color": [ 1.0, 0.0, 0.0 ]
+    },
+    {
+      "type": "sphere",
+      "translation": [ -4.0, -0.9, -7.0 ],
+      "radius": 2.5,
+      "color": [ 1.0, 1.0, 0.0 ]
     },
     {
       "type": "aa_box",

@@ -1,8 +1,11 @@
 # RendeRays raytracer
+![Screenshot](screenshot.ppm)
 ## Table of contents
 * [General info](#general-info)
 * [Technologies](#technologies)
 * [Usage](#usage)
+	* [Usage example](#usage-example)
+	* [For developers](#for-developers)
 ### General info
 Rendering static images of a scene using ray-tracing technique. 
 Used for rendering studies and computer vision applications as a source for test images.
@@ -17,3 +20,7 @@ Rendered output images are placed in *'/output'* folder.
 #### Usage example
 To start rendering the scene described in 'scene/test_scene.json' file and display images immediately after each render, write:
 > RendeRays.exe -f test_scene.json -s
+#### For developers
+In Visual Studio: after cloning the repo go to *'Project properties'* and select *'Debugging'* section:  
+- Add *'Cmmand arguments'* as described above.
+- Set *'Working directory'* to location of the application .exe file.
