@@ -160,5 +160,6 @@ coordinate system.
 - Add orthographic camera type.
 - Add material system for renderables.
 - Add shadows.
+- Add post-processing capabilities, like, grayscale, blur, negative ...
 ## Author
 Designed and developed by [Ivars Rb.](https://github.com/ivarsrb)
