@@ -1,0 +1,45 @@
+{
+  "name": "cubes",
+  "output_size": [ 800, 600 ],
+  "background": [ 1.0, 1.0, 1.0 ],
+  "cameras": [
+    {
+      "type": "perspective",
+      "fov": 60.0,
+      "translation": [ 2.0, 1.0, 0.0 ],
+      "rotation_y": 30.0
+    },
+    {
+      "type": "perspective",
+      "fov": 60.0,
+      "translation": [ -2.0, 1.0, 0.0 ],
+      "rotation_y": 330.0
+    }
+  ],
+  "light": {
+    "type": "directional",
+    "direction": [ 1.5, -1.0, -1.0 ],
+    "ambient": [ 0.2, 0.2, 0.2 ],
+    "diffuse": [ 1.0, 1.0, 1.0 ]
+  },
+  "renderables": [
+    {
+      "type": "aa_box",
+      "translation": [ 0.0, 1.5, -5.0 ],
+      "half_size": 1.0,
+      "color": [ 0.0, 1.0, 0.0 ]
+    },
+    {
+      "type": "aa_box",
+      "translation": [ 1.0, 0.0, -5.0 ],
+      "half_size": 0.5,
+      "color": [ 0.0, 0.0, 1.0 ]
+    },
+    {
+      "type": "aa_box",
+      "translation": [ -1.0, 2.0, -4.0 ],
+      "half_size": 0.5,
+      "color": [ 1.0, 0.0, 0.0 ]
+    }
+  ]
+}
