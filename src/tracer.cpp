@@ -29,31 +29,39 @@ t::Vec3 Tracer::Trace(const t::Vec2u16& raster_pixel, const Scene& scene, const 
     const Ray primary_ray = vantage_point.CastPrimaryRay(raster_pixel);
     for (const auto& renderable : scene.GetRenderables()) {
         // Does this ray hit the object and if 'yes' then check if this object lies in front of other object.
-        if (Hit hit; renderable.get()->Intersect(primary_ray, hit) && hit.GetDistance() < nearest_hit_distance) {
+        if (Hit hit; renderable->Intersect(primary_ray, hit) && hit.GetDistance() < nearest_hit_distance) {
             nearest_hit_distance = hit.GetDistance();
             // Determine final pixel color by lighting
-            pixel_color = renderable.get()->GetColor();
+            pixel_color = renderable->GetColor();
             // Alter pixel color by performing lighting calculations
-            CalculateLighting(pixel_color, scene, hit);
-            // Post processing
-            
-            //pixel_color = pixel_color + hit.GetDistance();
-
+            pixel_color = CalculateLighting(pixel_color, scene, hit);
+            // Alter pixel color Post processing
+            pixel_color = ObjectPostProcess(pixel_color, scene, hit);
         }
     }
+    // Global post-process here ...
     return pixel_color;
 };
-
 
 // Lighting is implemented using Phong shading.
 // Final color of the object is calculated as:
 //  final_color = ( ambient + diffuse + specular) * object_color
-void Tracer::CalculateLighting(t::Vec3& pixel_color, const Scene& scene, const Hit& hit) const {
+t::Vec3 Tracer::CalculateLighting(const t::Vec3& pixel_color, const Scene& scene, const Hit& hit) const {
     t::Vec3 ambient = scene.GetLight()->GetAmbient();
     // Diffuse color is callculated according to specific implementation of scene lighting type.
     t::Vec3 diffuse = scene.GetLight()->GetDiffuseLit(hit.GetSurfaceNormal());
     // TODO: specular calcuations should be similar to diffuse
     t::Vec3 specular = scene.GetLight()->GetSpecular();
     // Apply all colors and make sure they dont exceed 0 - 1 barrier
-    pixel_color *= util::ClampColor((ambient + diffuse + specular));
+    return (pixel_color * util::ClampColor((ambient + diffuse + specular)));
+}
+
+// There can be several post processing applied to pixel color.
+// Function is called only for pixels belonging to objects.
+t::Vec3 Tracer::ObjectPostProcess(const t::Vec3& pixel_color, const Scene& scene, const Hit& hit) const {
+    const t::Vec3 fog_color = t::kColorWhite;
+    const t::F32 start = 0.0;
+    const t::F32 end = 20.0;
+    t::F32 f = (end - hit.GetDistance()) / (end - start);
+    return util::ClampColor(pixel_color * f + (1.0f - f) * fog_color);
 }
