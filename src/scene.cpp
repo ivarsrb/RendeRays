@@ -65,7 +65,10 @@ void Scene::LoadFromJson(const std::string& file_name) {
     LoadCameras(scene_data.at("cameras"));
     LoadLight(scene_data.at("light"));
     LoadRenderables(scene_data.at("renderables"));
-    LoadFog(scene_data.at("fog"));
+    // This key may not be present
+    if (scene_data.find("fog") != scene_data.end()) {
+        LoadFog(scene_data.at("fog"));
+    }
 }
 
 void Scene::LoadName(const util::JSONLoader::JsonType& json_data) {

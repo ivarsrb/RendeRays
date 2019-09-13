@@ -56,14 +56,6 @@ t::Vec3 Tracer::CalculateLighting(const t::Vec3& pixel_color, const Scene& scene
     return (pixel_color * util::ClampColor((ambient + diffuse + specular)));
 }
 
-t::Vec3 ApplyFog(const t::Vec3& pixel_color, t::F32 depth) {
-    const t::Vec3 fog_color = t::kColorWhite;
-    const t::F32 start = 0.0;
-    const t::F32 end = 20.0;
-    t::F32 f = (end - depth) / (end - start);
-    return pixel_color * f + (1.0f - f) * fog_color;
-};
-
 // There can be several post processing applied to pixel color.
 // Function is called only for pixels belonging to objects.
 t::Vec3 Tracer::ObjectPostProcess(const t::Vec3& pixel_color, const Scene& scene, const Hit& hit) const {
