@@ -1,5 +1,6 @@
 #include "tracer.h"
 #include "ray.h"
+#include "util/util.h"
 
 Tracer::Tracer() {
 }
@@ -34,6 +35,10 @@ t::Vec3 Tracer::Trace(const t::Vec2u16& raster_pixel, const Scene& scene, const 
             pixel_color = renderable.get()->GetColor();
             // Alter pixel color by performing lighting calculations
             CalculateLighting(pixel_color, scene, hit);
+            // Post processing
+            
+            //pixel_color = pixel_color + hit.GetDistance();
+
         }
     }
     return pixel_color;
@@ -50,5 +55,5 @@ void Tracer::CalculateLighting(t::Vec3& pixel_color, const Scene& scene, const H
     // TODO: specular calcuations should be similar to diffuse
     t::Vec3 specular = scene.GetLight()->GetSpecular();
     // Apply all colors and make sure they dont exceed 0 - 1 barrier
-    pixel_color *= glm::clamp((ambient + diffuse + specular), 0.0f, 1.0f);
+    pixel_color *= util::ClampColor((ambient + diffuse + specular));
 }

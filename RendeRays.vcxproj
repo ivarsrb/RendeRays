@@ -331,6 +331,7 @@
     <ClInclude Include="src\util\util.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="product\scenes\cube_scene.json" />
     <None Include="product\scenes\scene.json" />
     <None Include="src\external\glm\detail\func_common.inl" />
     <None Include="src\external\glm\detail\func_common_simd.inl" />

@@ -18,4 +18,8 @@ std::string StripIlligallChars(const std::string& text) {
     }
     return stripped_string;
 }
+
+t::Vec3 ClampColor(const t::Vec3& color) {
+    return glm::clamp(color, 0.0f, 1.0f);
+}
 }; // util

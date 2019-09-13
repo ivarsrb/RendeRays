@@ -14,4 +14,6 @@ void VectorNANtoNum(t::Vec3& vec);
 // Strip given string from illigal characters.
 // Meant for file names sfety.
 std::string StripIlligallChars(const std::string& text);
+// Clamp color to normal 0.0 - 1.0 range
+t::Vec3 ClampColor(const t::Vec3& color);
 }; // util
