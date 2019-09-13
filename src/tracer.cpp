@@ -44,11 +44,11 @@ t::Vec3 Tracer::Trace(const t::Vec2u16& raster_pixel, const Scene& scene, const 
 // Final color of the object is calculated as:
 //  final_color = ( ambient + diffuse + specular) * object_color
 void Tracer::CalculateLighting(t::Vec3& pixel_color, const Scene& scene, const Hit& hit) const {
-    t::Vec3 ambient = scene.GetLight().get()->GetAmbient();
+    t::Vec3 ambient = scene.GetLight()->GetAmbient();
     // Diffuse color is callculated according to specific implementation of scene lighting type.
-    t::Vec3 diffuse = scene.GetLight().get()->GetDiffuseLit(hit.GetSurfaceNormal());
+    t::Vec3 diffuse = scene.GetLight()->GetDiffuseLit(hit.GetSurfaceNormal());
     // TODO: specular calcuations should be similar to diffuse
-    t::Vec3 specular = scene.GetLight().get()->GetSpecular();
+    t::Vec3 specular = scene.GetLight()->GetSpecular();
     // Apply all colors and make sure they dont exceed 0 - 1 barrier
     pixel_color *= glm::clamp((ambient + diffuse + specular), 0.0f, 1.0f);
 }
