@@ -132,6 +132,7 @@ Distance fog is a post-processing effect that alters the color of an object base
 from camera, fog color and fog function.
 Pixel color is calculated with given equation:
 > C = f * Ci + (1 - f) * Cf  
+
 where *C* is final pixel color, *Ci* is unmodified pixel color, *Cf* is fog color and *f* is a fog factor.  
 Fog factor for each pixel is calculated differently depending on fog function.  
 Fog functions currently implemented:
@@ -139,6 +140,7 @@ Fog functions currently implemented:
 
 With *linear* fog function a fog factor is calculated as follows:  
 > f = (end - d) / (end - start)  
+
 where *f* is a fog factor, *start* is closest distance after effect starts, *end* is a maximum distance of effect and
 *d* is pixel's depth from camera.  
 To describe linear fog:  
