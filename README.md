@@ -130,7 +130,7 @@ To describe directional light:
 #### Fog
 Distance fog is a post-processing effect that alters the color of an object based and it's distance
 from camera, fog color and fog function.
-Pixel color is calculated with given equation:
+Pixel color is calculated with given blend function:
 > C = f * Ci + (1 - f) * Cf  
 
 where *C* is final pixel color, *Ci* is unmodified pixel color, *Cf* is fog color and *f* is a fog factor.  
@@ -141,7 +141,7 @@ Fog functions currently implemented:
 With *linear* fog function a fog factor is calculated as follows:  
 > f = (end - d) / (end - start)  
 
-where *f* is a fog factor, *start* is closest distance after effect starts, *end* is a maximum distance of effect and
+where *f* is a fog factor, *start* is closest distance after which the effect starts, *end* is a maximum distance of the effect and
 *d* is pixel's depth from camera.  
 To describe linear fog:  
 ```javascript
@@ -152,7 +152,8 @@ To describe linear fog:
     "color": [ 1.0, 1.0, 1.0 ]
   },
 ```    
-Fog is an optional parameter.
+Fog is an optional parameter.  
+Fog and blend functions are inspired by [Microsoft Direct3d9 documentation](https://docs.microsoft.com/en-us/windows/win32/direct3d9/fog-formulas)
 #### Objects to render
 *'Renderables'* property describes objects of the scene to be rendered. 
 Currently there are two renderable objects supported:  
