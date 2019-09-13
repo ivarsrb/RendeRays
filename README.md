@@ -13,6 +13,7 @@
 	* [Background color](#background-color)
 	* [Cameras](#cameras)
 	* [Light source](#light-source)
+	* [Fog](#fog)
 	* [Objects to render](#objects-to-render)
 * [TODOs](#todos)
 * [Author](#author)
@@ -46,6 +47,9 @@ Scenes are described in *.json* files with the following pseudo-structure:
 		...
 	],
 	"light": {
+		...
+	},
+	"fog": {
 		...
 	},
 	"renderables": [
@@ -123,6 +127,30 @@ To describe directional light:
 	"ambient": [ 0.2, 0.2, 0.2 ]
 }
 ```  
+#### Fog
+Distance fog is a post-processing effect that alters the color of an object based and it's distance
+from camera, fog color and fog function.
+Pixel color is calculated with given equation:
+> C = f * Ci + (1 - f) * Cf  
+where *C* is final pixel color, *Ci* is unmodified pixel color, *Cf* is fog color and *f* is a fog factor.  
+Fog factor for each pixel is calculated differently depending on fog function.  
+Fog functions currently implemented:
+- Linear  
+
+With *linear* fog function a fog factor is calculated as follows:  
+> f = (end - d) / (end - start)  
+where *f* is a fog factor, *start* is closest distance after effect starts, *end* is a maximum distance of effect and
+*d* is pixel's depth from camera.  
+To describe linear fog:  
+```javascript
+"fog": {
+    "type": "linear",
+    "start": 0.0,
+    "end": 20.0,
+    "color": [ 1.0, 1.0, 1.0 ]
+  },
+```    
+Fog is an optional parameter.
 #### Objects to render
 *'Renderables'* property describes objects of the scene to be rendered. 
 Currently there are two renderable objects supported:  
