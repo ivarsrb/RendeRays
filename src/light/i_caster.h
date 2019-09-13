@@ -1,5 +1,4 @@
 #pragma once
-#include <tuple>
 #include <util/types.h>
 
 // Interface to light sources used to light the scene.
@@ -11,6 +10,7 @@ public:
     // Virtual destructor of a base class ensures that when object
     // is deleted trhough base class pointer both destructors get called.
     virtual ~ICaster() = default;
+    // Get original non processed colors
     const t::Vec3& GetAmbient() const;
     const t::Vec3& GetDiffuse() const;
     const t::Vec3& GetSpecular() const;

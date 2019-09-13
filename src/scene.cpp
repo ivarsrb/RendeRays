@@ -5,6 +5,7 @@
 #include "light/directional.h"
 #include "renderable/sphere.h"
 #include "renderable/aa_box.h"
+#include "postprocess/linear_fog.h"
 
 Scene::Scene(const std::string& file_name) {
     LoadFromJson(file_name);
@@ -46,6 +47,14 @@ const std::unique_ptr<light::ICaster>& Scene::GetLight() const {
     return light_;
 }
 
+void Scene::SetFog(std::unique_ptr<postprocess::IFog> fog) {
+    fog_ = std::move(fog);
+}
+
+const std::unique_ptr<postprocess::IFog>& Scene::GetFog() const {
+    return fog_;
+}
+
 void Scene::LoadFromJson(const std::string& file_name) {
     util::JSONLoader scene_loader(file_name);
     const auto& scene_data = scene_loader.Get();
@@ -56,6 +65,7 @@ void Scene::LoadFromJson(const std::string& file_name) {
     LoadCameras(scene_data.at("cameras"));
     LoadLight(scene_data.at("light"));
     LoadRenderables(scene_data.at("renderables"));
+    LoadFog(scene_data.at("fog"));
 }
 
 void Scene::LoadName(const util::JSONLoader::JsonType& json_data) {
@@ -108,7 +118,7 @@ void Scene::LoadLight(const util::JSONLoader::JsonType& json_data) {
     if (json_data.at("type").get<std::string>() == "ambient") {
         const std::vector<t::F32> color = json_data.at("ambient");
         SetLight(std::make_unique<light::Ambient>(t::Vec3(color.at(0), color.at(1), color.at(2))));
-        util::Log::Info("Ambient light - ", color[0], ", ", color[1], ", ", color[2]);
+        util::Log::Info("Ambient light - (", color[0], ", ", color[1], ", ", color[2],")");
     }
     else if (json_data.at("type").get<std::string>() == "directional") {
         const std::vector<t::F32> direction = json_data.at("direction");
@@ -146,5 +156,18 @@ void Scene::LoadRenderables(const util::JSONLoader::JsonType& json_data) {
             util::Log::Info("Axis aligned box: position - (", translation[0], ", ", translation[1], ", ", translation[2], "), half size - ",
                 half_size, ", color - (", color[0], ", ", color[1], ", ", color[2], ")");
         }
+    }
+}
+
+// Fog is an optional parameter
+void Scene::LoadFog(const util::JSONLoader::JsonType& json_data) {
+    // Linear fog
+    if (json_data.at("type").get<std::string>() == "linear") {
+        const t::F32 start = json_data.at("start");
+        const t::F32 end = json_data.at("end");
+        const std::vector<t::F32> color = json_data.at("color");
+        SetFog(std::make_unique<postprocess::LinearFog>(start, end, t::Vec3(color.at(0), color.at(1), color.at(2))));
+        util::Log::Info("Linear fog: start - ",start,", end - ",end,
+            ", color - (", color[0], ", ", color[1], ", ", color[2], ")");
     }
 }
