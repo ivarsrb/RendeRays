@@ -6,6 +6,7 @@
 #include "renderable/sphere.h"
 #include "renderable/aa_box.h"
 #include "postprocess/linear_fog.h"
+#include "postprocess/exponential_fog.h"
 
 Scene::Scene(const std::string& file_name) {
     LoadFromJson(file_name);
@@ -141,6 +142,7 @@ void Scene::LoadLight(const util::JSONLoader::JsonType& json_data) {
 
 void Scene::LoadRenderables(const util::JSONLoader::JsonType& json_data) {
     for (const auto& renderable : json_data) {
+        // Sphere
         if (renderable.at("type").get<std::string>() == "sphere") {
             const std::vector<t::F32> translation = renderable.at("translation");
             const t::F32 radius = renderable.at("radius");
@@ -150,6 +152,7 @@ void Scene::LoadRenderables(const util::JSONLoader::JsonType& json_data) {
             util::Log::Info("Sphere: position - (", translation[0], ", ", translation[1], ", ", translation[2], "), radius - ",
                 radius, ", color - (", color[0], ", ", color[1], ", ", color[2], ")");
         }
+        // Axis-alligned box
         else if (renderable.at("type").get<std::string>() == "aa_box") {
             const std::vector<t::F32> translation = renderable.at("translation");
             const t::F32 half_size = renderable.at("half_size");
@@ -171,6 +174,14 @@ void Scene::LoadFog(const util::JSONLoader::JsonType& json_data) {
         const std::vector<t::F32> color = json_data.at("color");
         SetFog(std::make_unique<postprocess::LinearFog>(start, end, t::Vec3(color.at(0), color.at(1), color.at(2))));
         util::Log::Info("Linear fog: start - ",start,", end - ",end,
+            ", color - (", color[0], ", ", color[1], ", ", color[2], ")");
+    }
+    // Exponential fog
+    else if ((json_data.at("type").get<std::string>() == "exponential")) {
+        const t::F32 density = json_data.at("density");
+        const std::vector<t::F32> color = json_data.at("color");
+        SetFog(std::make_unique<postprocess::ExponentialFog>(density, t::Vec3(color.at(0), color.at(1), color.at(2))));
+        util::Log::Info("Exponential fog: density - ", density,
             ", color - (", color[0], ", ", color[1], ", ", color[2], ")");
     }
 }

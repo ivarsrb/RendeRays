@@ -23,9 +23,8 @@
     "diffuse": [ 1.0, 1.0, 1.0 ]
   },
   "fog": {
-    "type": "linear",
-    "start": 0.0,
-    "end": 20.0,
+    "type": "exponential",
+    "density": 0.05,
     "color": [ 1.0, 1.0, 1.0 ]
   },
   "renderables": [

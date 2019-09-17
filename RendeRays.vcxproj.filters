@@ -87,6 +87,12 @@
     <ClCompile Include="src\postprocess\i_fog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\postprocess\linear_fog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\postprocess\exponential_fog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\external\glm\detail\_features.hpp">
@@ -879,6 +885,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\postprocess\i_fog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\postprocess\linear_fog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\postprocess\exponential_fog.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

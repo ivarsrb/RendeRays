@@ -34,6 +34,7 @@
     <ClCompile Include="src\light\ambient.cpp" />
     <ClCompile Include="src\light\directional.cpp" />
     <ClCompile Include="src\light\i_caster.cpp" />
+    <ClCompile Include="src\postprocess\exponential_fog.cpp" />
     <ClCompile Include="src\postprocess\i_fog.cpp" />
     <ClCompile Include="src\postprocess\linear_fog.cpp" />
     <ClCompile Include="src\ray.cpp" />
@@ -317,6 +318,7 @@
     <ClInclude Include="src\light\ambient.h" />
     <ClInclude Include="src\light\directional.h" />
     <ClInclude Include="src\light\i_caster.h" />
+    <ClInclude Include="src\postprocess\exponential_fog.h" />
     <ClInclude Include="src\postprocess\i_fog.h" />
     <ClInclude Include="src\postprocess\linear_fog.h" />
     <ClInclude Include="src\renderable\aa_box.h" />
