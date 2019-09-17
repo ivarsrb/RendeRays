@@ -136,8 +136,10 @@ Pixel color is calculated with given blend function:
 where *C* is final pixel color, *Ci* is unmodified pixel color, *Cf* is fog color and *f* is a fog factor.  
 Fog factor for each pixel is calculated differently depending on fog function.  
 Fog functions currently implemented:
-- Linear  
+- Linear
+- Exponential  
 
+**Linear**:
 With *linear* fog function a fog factor is calculated as follows:  
 > f = (end - d) / (end - start)  
 
@@ -151,7 +153,21 @@ To describe linear fog:
     "end": 20.0,
     "color": [ 1.0, 1.0, 1.0 ]
   },
-```    
+``` 
+**Exponential**:
+With *exponential* fog function a fog factor is calculated as follows:  
+> f = 1 / exp(density*d)  
+
+where *f* is a fog factor, *density* is a relative fog density ranging from 0.0 - 1.0 and
+*d* is pixel's depth from camera.  
+To describe exponential fog:  
+```javascript
+"fog": {
+    "type": "exponential",
+    "density": 0.5,
+    "color": [ 1.0, 1.0, 1.0 ]
+  },
+``` 
 Fog is an optional parameter.  
 Fog and blend functions are inspired by [Microsoft Direct3d9 documentation](https://docs.microsoft.com/en-us/windows/win32/direct3d9/fog-formulas)
 #### Objects to render
