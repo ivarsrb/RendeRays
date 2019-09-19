@@ -23,6 +23,7 @@ void Tracer::Render(const Scene& scene, const Camera& vantage_point, RenderBuffe
 // calculate lighting for it and return.
 t::Vec3 Tracer::Trace(const t::Vec2u16& raster_pixel, const Scene& scene, const Camera& vantage_point) const {
     t::Vec3 pixel_color = scene.GetBackgroundColor();
+    // Current pixel depth
     t::F32 nearest_hit_distance = t::kInfinity32;
     // Get a ray going from camera world position to image plane point that
     // corresponds to given pixel in raster space
@@ -35,11 +36,10 @@ t::Vec3 Tracer::Trace(const t::Vec2u16& raster_pixel, const Scene& scene, const 
             pixel_color = renderable->GetColor();
             // Alter pixel color by performing lighting calculations
             pixel_color = CalculateLighting(pixel_color, scene, hit);
-            // Alter pixel color Post processing
-            pixel_color = ObjectPostProcess(pixel_color, scene, hit);
         }
     }
-    // Global post-process here ...
+    // Alter pixel clor in post processing
+    pixel_color = PostProcessing(pixel_color, scene, nearest_hit_distance);
     return pixel_color;
 };
 
@@ -56,12 +56,12 @@ t::Vec3 Tracer::CalculateLighting(const t::Vec3& pixel_color, const Scene& scene
     return (pixel_color * util::ClampColor((ambient + diffuse + specular)));
 }
 
-// There can be several post processing applied to pixel color.
-// Function is called only for pixels belonging to objects.
-t::Vec3 Tracer::ObjectPostProcess(const t::Vec3& pixel_color, const Scene& scene, const Hit& hit) const {
+// Various post processing effect one-by-one to adjust pixel color
+t::Vec3 Tracer::PostProcessing(const t::Vec3& pixel_color, const Scene& scene, const t::F32& depth) const {
     t::Vec3 color = pixel_color;
-    if (scene.GetFog()) {
-        color =  util::ClampColor(scene.GetFog()->Calculate(pixel_color, hit.GetDistance()));
+    // Fog - if fog is set and depth value is not at infinity (means pixel belongs to an object)
+    if (depth < t::kInfinity32 && scene.GetFog()) {
+        color = util::ClampColor(scene.GetFog()->Calculate(pixel_color, depth));
     }
     return color;
 }

@@ -24,11 +24,10 @@ private:
     // hit - information about current ray-object collision.
     // Returns newly calculated pixel color
     t::Vec3 CalculateLighting(const t::Vec3& pixel_color, const Scene& scene, const Hit& hit) const;
-    // Perform final calculations on pixel given its depth and location in buffer.
-    // Applies only to pixels that are found to belong to renderable objects.
+    // Adjust given pixel color by post-processing effects that are enabled and pixel's depth if necessary
     // pixel_color - color of a pixel existing after lighting calculation.
     // scene - stores post-processing information.
-    // hit - information about pixel depth
+    // depth - information about pixel depth
     // Returns newly calculated pixel color
-    t::Vec3 ObjectPostProcess(const t::Vec3& pixel_color, const Scene& scene, const Hit& hit) const;
+    t::Vec3 PostProcessing(const t::Vec3& pixel_color, const Scene& scene, const t::F32& depth) const;
 };
