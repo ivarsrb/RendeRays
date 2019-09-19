@@ -9,7 +9,7 @@ JSONLoader::JSONLoader(const std::string& file_name) :
     Log::Info("Parsing of '", file_name, "' complete");
 }
 
-const JSONLoader::JsonType JSONLoader::Get() const {
+const JSONLoader::JsonType& JSONLoader::Get() const {
     return parsed_data_;
 }
 
