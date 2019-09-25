@@ -1,0 +1,3 @@
+# Ignore Debug binary
+*_Debug.exe
+*_Test.exe
