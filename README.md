@@ -209,4 +209,4 @@ coordinate system.
 - Add shadows.
 - Add post-processing capabilities, like, grayscale, blur, negative ...
 ## Author
-Designed and developed by [Ivars Rb.](https://github.com/ivarsrb)
+Designed and developed by [Ivars Rusbergs](https://github.com/ivarsrb)
